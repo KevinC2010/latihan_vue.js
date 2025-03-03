@@ -7,29 +7,39 @@
   </head>
   <body>
     <div id="app">
-      <div>{{count}}</div>
-      <div>{{message}}</div>
-      <div v-text="message"></div>
-      <div v-text="message2">ini adalah random text</div>
-      <div v-html="message3">ini adalah random text</div>
+      <ul v-for="(apapun,index) in buah">
+        <li>{{apapun}} {{index}} <button @click="hapus(index)">X</button></li>
+      </ul>
+
+      <ul v-for="(ship,index) in pacific_fleet">
+        <li>{{ship.name}} - {{ship.class}} - {{index}}</li>
+      </ul>
     </div>
     <script type="module">
       import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
       createApp({
         data() {
           return {
-            count: 0,
-            message: "hello world",
-            message2: "melakukan replace kalimat",
-            message3: "<strong>ini tulisan bold</strong>",
+            buah: [
+              "appel",
+              "orange",
+              "melon",
+              "lemon",
+              "papaya",
+              "dragon fruit",
+            ],
+            pacific_fleet: [
+              { name: "yamato", class: "battleship" },
+              { name: "kakao", class: "heavy cruiser" },
+              { name: "kongo", class: "battleship" },
+              { name: "kaga", class: "aircraft carrier" },
+              { name: "I-401", class: "submarine" },
+            ],
           };
         },
         methods: {
-          tambah() {
-            this.count++;
-          },
-          kurang() {
-            this.count--;
+          hapus(index) {
+            this.buah.splice(index, 1);
           },
         },
       }).mount("#app");
