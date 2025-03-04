@@ -7,39 +7,36 @@
   </head>
   <body>
     <div id="app">
-      <ul v-for="(apapun,index) in buah">
-        <li>{{apapun}} {{index}} <button @click="hapus(index)">X</button></li>
-      </ul>
-
-      <ul v-for="(ship,index) in pacific_fleet">
-        <li>{{ship.name}} - {{ship.class}} - {{index}}</li>
-      </ul>
+      <button @click="mengurangi">-</button>
+      <span>{{count}}</span>
+      <button @click="menambah">+</button>
+      <br />
+      <button @click="sayHello('cara fajar')">say hello</button>
+      <br />
+      <input type="text" v-on:keydown.space="sayHello('cara fajar')" />
+      <br />
+      <form action="baca.html" v-on:submit.prevent>
+        <input type="text" />
+        <input type="submit" value="send" />
+      </form>
     </div>
     <script type="module">
       import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
       createApp({
         data() {
           return {
-            buah: [
-              "appel",
-              "orange",
-              "melon",
-              "lemon",
-              "papaya",
-              "dragon fruit",
-            ],
-            pacific_fleet: [
-              { name: "yamato", class: "battleship" },
-              { name: "kakao", class: "heavy cruiser" },
-              { name: "kongo", class: "battleship" },
-              { name: "kaga", class: "aircraft carrier" },
-              { name: "I-401", class: "submarine" },
-            ],
+            count: 0,
           };
         },
         methods: {
-          hapus(index) {
-            this.buah.splice(index, 1);
+          mengurangi() {
+            this.count--;
+          },
+          menambah() {
+            this.count++;
+          },
+          sayHello(whatever) {
+            alert("hello " + whatever);
           },
         },
       }).mount("#app");
