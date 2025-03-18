@@ -27,21 +27,31 @@
             count: 0
           };
         },
+        //beforeCreate kondisi dipanggil sebelum komponen diinisialisasi. Data dan event belum diatur
         beforeCreate() {
           console.log(`before create : ${this.message}`)
         },
+        //Create kondisi dipanggil setelah komponen diinisialisasi. Data dan event sudah tersedia
+        //created digunakan untuk menginisialisasi data, membuat permintaan API awal.
         created() {
           console.log(`create: ${this.message}`)
         },
+        //beforeMount Dipanggil sebelum template komponen dikompilasi dan dipasang ke DOM
         beforeMount() {
           console.log(`before mount: ${this.$refs.inputan}`)  
         },
+        //mounted dipanggil setelah komponen dipasang ke DOM. Anda dapat mengakses elemen DOM di sini.
+        //digunakan saat mengakses elemen DOM, memanipulasi DOM.
         mounted() {
           console.log(`mounted: ${this.$refs.inputan.value}`)
         },
+        //beforeUpdate dipanggil sebelum komponen diperbarui karena perubahan data.
+        //digunakan melakukan persiapan sebelum pembaruan DOM.
         beforeUpdate() {
           console.log(`before update: ${this.$refs.hitungan.value}`)
         },
+        //update dipanggil setelah komponen diperbarui. DOM telah diperbarui.
+        //digunakan melakukan operasi setelah pembaruan DOM.
         updated() {  
           console.log(`update: ${this.$refs.hitungan.value}`)
         },
